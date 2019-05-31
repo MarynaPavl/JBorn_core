@@ -7,8 +7,8 @@ public class Task3 {
         int n = requestNumber();
         int a = n / 10;
         int b = n % 10;
-        int c = n % 10 + a;
-        int d = a * (c - a);
+        int c = b + a;
+        int d = a * b;
         System.out.println("Число десятков =" + a + "; число единиц=" + b + "; сумма цифр =" + c + "; произведение цифр =" + d);
 
     }
