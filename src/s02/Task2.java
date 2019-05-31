@@ -7,8 +7,8 @@ public class Task2 {
         int n = requestNumber();
         int h = 60 * 60;
         int a = n / h;
-        int b = (n - h * a) / 60;
-        int c = (n - h * a) - (b * 60);
+        int b = n % h / 60;
+        int c = n % h - b * 60;
         System.out.println("Часов = " + a + "; Минут = " + b + "; Секунд= " + c);
     }
 
