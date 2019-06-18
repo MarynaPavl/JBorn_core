@@ -12,10 +12,7 @@ public class Task2 {
 
         for (int i = 0; i < array.length; i++) {
             array[i] = rand.nextInt(10);
-        }
-        System.out.println("Genetated massive:");
-        for (int i:array) {
-            System.out.print(array[i]);
+            System.out.print("Результат:"+array[i]);
         }
     }
 
