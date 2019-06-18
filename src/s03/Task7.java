@@ -8,9 +8,9 @@ public class Task7 {
         char[] chars = line.toCharArray();
         for (char c : chars) {
             if (Character.isUpperCase(c))
-                System.out.print(Character.toString(c).toLowerCase());
+                System.out.print(Character.toLowerCase(c));
             else
-                System.out.print(Character.toString(c).toUpperCase());
+                System.out.print(Character.toUpperCase(c));
         }
     }
 
