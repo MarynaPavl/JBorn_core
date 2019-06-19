@@ -20,7 +20,11 @@ public class Task9 {
         }
 
         for (int i = 0; i < list.length; i++) {
-            System.out.print(list[i] + ",");
+            if (i == list.length - 1) {
+                System.out.println(list[i]);
+            } else {
+                System.out.print(list[i] + ",");
+            }
         }
     }
 
