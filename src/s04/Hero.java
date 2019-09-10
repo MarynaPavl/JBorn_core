@@ -4,24 +4,26 @@ import java.util.Collections;
 
 public class Hero {
     static int INITIAL_HEALTH = 100;
+    private int health;
+    private final int power;
+    private final int speed;
+
 
     public int getHealth() {
+
         return health;
     }
 
-    private int health;
 
     public int getPower() {
         return power;
     }
 
-    private final int power;
 
     public int getSpeed() {
         return speed;
     }
 
-    private final int speed;
 
     public Hero() {
         health = INITIAL_HEALTH;
