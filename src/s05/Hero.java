@@ -38,10 +38,10 @@ public class Hero {
     }
 
     public void hit(Hero hero) {
-        hero.hit2(hero.power);
+        hero.impact(hero.power);
     }
 
-    public void hit2(int power) {
+    public void impact(int power) {
         this.health = this.health - power;
     }
 
