@@ -27,7 +27,7 @@ public class GodTimeHero extends Hero {
     @Override
     public void impact(int power) {
         long hitTime = System.currentTimeMillis();
-        if (hitTime >= getVulnerableTime()) {
+        if (hitTime < getVulnerableTime()) {
             super.impact(power);
         }
     }
