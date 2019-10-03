@@ -1,21 +1,26 @@
 package s05;
 
 public class Operation {
-    int leftOperand;
-    int rightOperand;
-    int s;
-    int p;
+    int previous;
+    int current;
 
-    public int calculate(int leftOperand, int rightOperand) {
-        return s;
+    int calculate(int leftOperand, int rightOperand) {
+
+        return current;
     }
 
-    public int getS() {
-        return s;
+    public int getPrevious() {
+        return previous;
     }
 
     int returnPrevious() {
-        p = s;
-        return p;
+        return previous;
     }
+
 }
+
+
+
+
+
+
