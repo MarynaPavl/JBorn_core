@@ -27,16 +27,15 @@ public enum LatinAlphabet {
     X(24),
     Y(25),
     Z(26);
-    private int o;
 
 
     LatinAlphabet(int o) {
-        this.o = o;
 
     }
 
     public int getO() {
-        return o;
+
+        return this.ordinal()+1;
     }
 
 }
