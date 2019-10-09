@@ -1,6 +1,7 @@
 package s06;
 
-public class Square extends Shape {
+public class Square extends Rectangle {
+    private double sideA;
 
     Square(double sideA) {
         this.sideA = sideA;

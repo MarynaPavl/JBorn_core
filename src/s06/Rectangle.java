@@ -1,10 +1,15 @@
 package s06;
 
 public class Rectangle extends Shape {
+    private double sideA;
+    private double sideB;
 
     Rectangle(double sideA, double sideB) {
         this.sideA = sideA;
         this.sideB = sideB;
+    }
+
+    public Rectangle() {
     }
 
     @Override

@@ -1,7 +1,8 @@
 package s06;
 
 public class Triangle extends Shape {
-
+    private double sideA;
+    private double sideB;
     private double sideC;
 
     Triangle(double sideA, double sideB, double sideC) {
