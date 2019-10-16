@@ -9,8 +9,6 @@ public class Rectangle extends Shape {
         this.sideB = sideB;
     }
 
-    public Rectangle() {
-    }
 
     @Override
     public double calculatePerimeter() {
