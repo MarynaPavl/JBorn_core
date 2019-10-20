@@ -12,7 +12,9 @@ public class Triangle extends Shape {
 
     }
 
-
+    public double getSideC() {
+        return sideC;
+    }
 
     @Override
     public double calculatePerimeter() {
