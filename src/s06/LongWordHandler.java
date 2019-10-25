@@ -1,15 +1,8 @@
 package s06;
 
 public class LongWordHandler implements Handler {
-    private String message;
     private int m;
     private int n;
-
-    @Override
-    public String handleMessage(String message) {
-        this.message = message;
-        return message;
-    }
 
     LongWordHandler(int m, int n) {
         this.m = m;
@@ -24,7 +17,8 @@ public class LongWordHandler implements Handler {
         return n;
     }
 
-    String longWord() {
+    @Override
+    public String handleMessage(String message) {
         int i = 0;
         String[] letters = message.split(" ");
 
@@ -35,9 +29,7 @@ public class LongWordHandler implements Handler {
         }
         if (i == getM()) {
             return message;
-        } else {
+        } else
             return null;
-        }
-
     }
 }
