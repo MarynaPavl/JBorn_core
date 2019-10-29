@@ -20,21 +20,19 @@ public class LongWordHandler implements Handler {
     @Override
     public String handleMessage(String message) {
         int i = 0;
-        if(message == null)
+        if (message == null)
             return null;
-        else {
+        String[] letters = message.split(" ");
 
-            String[] letters = message.split(" ");
-
-            for (String str1 : letters) {
-                if (str1.length() >= getN()) {
-                    i++;
-                }
+        for (String str1 : letters) {
+            if (str1.length() >= getN()) {
+                i++;
             }
-            if (i >= getM()) {
-                return message;
-            } else
-                return null;
         }
+        if (i >= getM()) {
+            return message;
+        } else
+            return null;
     }
 }
+
