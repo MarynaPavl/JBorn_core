@@ -17,9 +17,9 @@ class Driver {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
-        birthday = LocalDate.of(year, month, dayOfMonth);
+        this.birthday = LocalDate.of(year, month, dayOfMonth);
         this.seriesNumber = seriesNumber;
-        dayOfIssue = LocalDate.of(years, months, days);
+        this.dayOfIssue = LocalDate.of(years, months, days);
     }
 
     LocalDate getBirthday() {
