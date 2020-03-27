@@ -30,4 +30,11 @@ class Driver {
         return dayOfIssue;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
 }
