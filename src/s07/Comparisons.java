@@ -7,24 +7,18 @@ public class Comparisons {
             return ((Double) a).compareTo((Double) b);
         } else {
             if (a instanceof Double) {
-                Double d1 = (Double) a;
-                Long l = Math.round(d1);
-                String st = String.valueOf(b);
-                Long num = Long.valueOf(st);
+                Double l = (Double) a;
+                Double num = b.doubleValue();
                 return l.compareTo(num);
             }
             if (b instanceof Double) {
-                Double d1 = (Double) b;
-                Long l = Math.round(d1);
-                String st = String.valueOf(a);
-                Long num = Long.valueOf(st);
+                Double l = (Double) b;
+                Double num = a.doubleValue();
                 return num.compareTo(l);
             } else {
-                String s = String.valueOf(a);
-                String st = String.valueOf(b);
-                Long num1 = Long.valueOf(s);
-                Long num2 = Long.valueOf(st);
-                return num1.compareTo(num2);
+                Double l = a.doubleValue();
+                Double num = b.doubleValue();
+                return l.compareTo(num);
             }
 
         }
