@@ -2,7 +2,7 @@ package s08;
 
 import java.io.*;
 import java.math.BigInteger;
-import java.util.ArrayList;
+
 
 public class Task1 {
     static String readFirstLine(File file) throws IOException {
@@ -46,27 +46,23 @@ public class Task1 {
         }
 
         String[] array = firstLine.split(" ");
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        int sum = 0;
+        BigInteger sum = BigInteger.valueOf(0);
 
         for (String number : array) {
             try {
-                arrayList.add(Integer.parseInt(number));
+                sum = sum.add(BigInteger.valueOf(Long.parseLong(number)));
             } catch (NumberFormatException nfe) {
-                System.out.println("Не допустимый формат числа");
+                throw new NumberFormatException("Не допустимый формат числа");
             }
+
+            String value = String.valueOf(sum);
+            BigInteger bigInt = new BigInteger(value);
+            if (bigInt.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
+                throw new Exception(value + ": сумма привышает допустимое значение");
+            }
+
+            writeToFirst(file2, value);
         }
 
-        for (int num : arrayList) {
-            sum += num;
-        }
-
-        String value = String.valueOf(sum);
-        BigInteger bigInt = new BigInteger(value);
-        if (bigInt.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
-            throw new Exception(value + ": сумма привышает допустимое значение");
-        }
-
-        writeToFirst(file2, value);
     }
 }
