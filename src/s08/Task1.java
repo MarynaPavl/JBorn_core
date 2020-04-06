@@ -27,10 +27,8 @@ public class Task1 {
 
         try {
             calculate(file1, file2);
-        } catch (FileNotFoundException f) {
-            System.out.println("Файл не найден");
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception f) {
+            f.printStackTrace();
         }
     }
 
@@ -54,15 +52,13 @@ public class Task1 {
             } catch (NumberFormatException nfe) {
                 throw new NumberFormatException("Не допустимый формат числа");
             }
-
-            String value = String.valueOf(sum);
-            BigInteger bigInt = new BigInteger(value);
-            if (bigInt.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
-                throw new Exception(value + ": сумма привышает допустимое значение");
-            }
-
-            writeToFirst(file2, value);
+        }
+        String value = String.valueOf(sum);
+        BigInteger bigInt = new BigInteger(value);
+        if (bigInt.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
+            throw new Exception(value + ": сумма привышает допустимое значение");
         }
 
+        writeToFirst(file2, value);
     }
 }
