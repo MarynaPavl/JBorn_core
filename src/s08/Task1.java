@@ -53,12 +53,12 @@ public class Task1 {
                 throw new NumberFormatException("Не допустимый формат числа");
             }
         }
-        String value = String.valueOf(sum);
-        BigInteger bigInt = new BigInteger(value);
-        if (bigInt.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
-            throw new Exception(value + ": сумма привышает допустимое значение");
+
+        if (sum.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
+            throw new Exception(sum + ": сумма привышает допустимое значение");
         }
 
+        String value = String.valueOf(sum);
         writeToFirst(file2, value);
     }
 }
