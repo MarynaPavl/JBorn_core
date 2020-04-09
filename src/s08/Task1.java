@@ -48,7 +48,8 @@ public class Task1 {
 
         for (String number : array) {
             try {
-                sum = sum.add(BigInteger.valueOf(Long.parseLong(number)));
+                BigInteger x = new BigInteger(number);
+                sum = sum.add(x);
             } catch (NumberFormatException nfe) {
                 throw new NumberFormatException("Не допустимый формат числа");
             }
