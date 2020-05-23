@@ -1,6 +1,6 @@
 package s10;
 
-public class MyNewList<T> implements List<T>{
+public class MyNewList<T> implements List<T> {
     int size;
     Node2<T> first;
     Node2<T> last;
@@ -24,13 +24,28 @@ public class MyNewList<T> implements List<T>{
         if (i < 0 || i >= size) {
             throw new IndexOutOfBoundsException();
         }
-        int a = 0;
-        Node2<T> current = first;
-        while (a != i) {
-            current = current.next;
-            a++;
-        }
+        Node2<T> current = search(i);
         return current.value;
+    }
+
+    public Node2<T> search(int i) {
+        int a = 0;
+        int b = size - 1;
+        Node2<T> current = first;
+        if (i < size / 2) {
+            while (a != i) {
+                current = current.next;
+                a++;
+            }
+        } else {
+            current = last;
+            while (b != i) {
+                current = current.prev;
+                b--;
+            }
+
+        }
+        return current;
     }
 
     @Override
@@ -52,12 +67,8 @@ public class MyNewList<T> implements List<T>{
             put(e);
         } else {
             Node2<T> node2 = new Node2<>(e);
-            int j = 0;
-            Node2<T> current = first;
-            while (j != i) {
-                current = current.next;
-                j++;
-            }
+            Node2<T> current = search(i);
+
             Node2<T> previous = current.prev;
             node2.next = current;
             node2.prev = previous;
@@ -73,12 +84,8 @@ public class MyNewList<T> implements List<T>{
         if (i < 0 || i >= size) {
             throw new IndexOutOfBoundsException();
         }
-        int j = 0;
-        Node2<T> current = first;
-        while (j != i) {
-            current = current.next;
-            j++;
-        }
+        Node2<T> current = search(i);
+
         Node2<T> previous = current.prev;
         Node2<T> following = current.next;
         previous.next = following;

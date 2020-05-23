@@ -31,7 +31,7 @@ public class Task2 {
         }
         System.out.println();
 
-        myNewList.remove(Integer.valueOf(8));
+        myNewList.remove(Integer.valueOf(4));
         for (int i = 0; i < myNewList.size; i++) {
             System.out.print(myNewList.get(i) + " ");
         }
