@@ -39,13 +39,14 @@ public class RealizationQueue<T> implements Queue<T> {
     @Override
     public T poll() {
         if (first != null) {
+            Node3<T> oldFirst = first;
             Node3<T> current = first.next;
             first = null;
             first = current;
 
             size--;
 
-            return first.value; // не пойму, как сделать что бы pool() ничего не возвращал в этом случае????
+            return oldFirst.value; // не пойму, как сделать что бы pool() ничего не возвращал в этом случае????
         }
         return null;
     }
