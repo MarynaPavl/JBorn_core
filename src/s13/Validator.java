@@ -1,8 +1,8 @@
 package s13;
 
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,19 +11,34 @@ public class Validator {
         Field[] fields = obj.getClass().getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
-            if (field.isAnnotationPresent(Max.class) & field.isAnnotationPresent(Min.class)) {
-                Integer a = field.getAnnotation(Max.class).length();
-                Integer c = field.getAnnotation(Min.class).length();
+            if (field.isAnnotationPresent(Max.class)) {
+                BigDecimal a = BigDecimal.valueOf(field.getAnnotation(Max.class).length());
                 if (field.getType() == String.class) {
-                    Integer b = Integer.valueOf((String) field.get(obj));
-                    if (b.compareTo(a) >= 0 | b.compareTo(c) <= 0) {
+                    BigDecimal b = new BigDecimal((String) field.get(obj));
+                    if (b.compareTo(a) >= 0) {
+                        return false;
+                    }
+                } else {
+
+                    BigDecimal b = new BigDecimal(String.valueOf(field.get(obj)));
+                    if (b.compareTo(a) >= 0) {
+
                         return false;
                     }
                 }
-                Integer b = (Integer) field.get(obj);
-                if (b.compareTo(a) >= 0 | b.compareTo(c) <= 0) {
-
-                    return false;
+            }
+            if (field.isAnnotationPresent(Min.class)) {
+                BigDecimal a = BigDecimal.valueOf(field.getAnnotation(Min.class).length());
+                if (field.getType() == String.class) {
+                    BigDecimal b = new BigDecimal((String) field.get(obj));
+                    if (b.compareTo(a) <= 0) {
+                        return false;
+                    }
+                } else {
+                    BigDecimal b = new BigDecimal(String.valueOf(field.get(obj)));
+                    if (b.compareTo(a) <= 0) {
+                        return false;
+                    }
                 }
             }
             if (field.isAnnotationPresent(NotNull.class)) {
