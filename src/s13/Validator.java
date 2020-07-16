@@ -47,17 +47,18 @@ public class Validator {
                 }
             }
             if (field.isAnnotationPresent(Regexp.class)) {
-                Pattern p = Pattern.compile(field.getAnnotation(Regexp.class).regexp());
-                Matcher m = p.matcher((CharSequence) field.get(obj));
-                if (!m.matches()) {
-                    return false;
+                if(field.get(obj) instanceof CharSequence) {
+                    Pattern p = Pattern.compile(field.getAnnotation(Regexp.class).regexp());
+                    Matcher m = p.matcher((CharSequence) field.get(obj));
+                    if (!m.matches()) {
+                        return false;
+                    }
                 }
             }
             if (field.isAnnotationPresent(NotEmpty.class)) {
                 NotEmpty notEmpty = field.getDeclaredAnnotation(NotEmpty.class);
                 if (notEmpty != null) {
-                    Object aClass = field.get(obj);
-                    if ((aClass instanceof Collection) && ((Collection) aClass).isEmpty()) {
+                    if ((field.get(obj) instanceof Collection) && ((Collection) field.get(obj)).isEmpty()) {
                         return false;
                     }
                 }
