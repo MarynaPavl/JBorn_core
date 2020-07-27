@@ -21,7 +21,7 @@ public class ObjectToSend {
         this.number = number;
     }
 
-    public int getLength() {
+    public double getLength() {
         return length;
     }
 

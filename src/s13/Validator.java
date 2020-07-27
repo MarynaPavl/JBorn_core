@@ -1,7 +1,6 @@
 package s13;
 
 import java.lang.reflect.Field;
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,33 +11,22 @@ public class Validator {
         for (Field field : fields) {
             field.setAccessible(true);
             if (field.isAnnotationPresent(Max.class)) {
-                BigDecimal a = BigDecimal.valueOf(field.getAnnotation(Max.class).length());
-                if (field.getType() == String.class) {
-                    BigDecimal b = new BigDecimal((String) field.get(obj));
-                    if (b.compareTo(a) >= 0) {
-                        return false;
-                    }
-                } else {
-
-                    BigDecimal b = new BigDecimal(String.valueOf(field.get(obj)));
-                    if (b.compareTo(a) >= 0) {
-
+                int a = field.getAnnotation(Max.class).length();
+                if (field.get(obj) instanceof Number) {
+                    Number b = (Number) field.get(obj);
+                    if (b.intValue() > a) {
                         return false;
                     }
                 }
             }
             if (field.isAnnotationPresent(Min.class)) {
-                BigDecimal a = BigDecimal.valueOf(field.getAnnotation(Min.class).length());
-                if (field.getType() == String.class) {
-                    BigDecimal b = new BigDecimal((String) field.get(obj));
-                    if (b.compareTo(a) <= 0) {
+                int a = field.getAnnotation(Min.class).length();
+                if (field.get(obj) instanceof Number) {
+                    Number b = (Number) field.get(obj);
+                    if (b.intValue() < a) {
                         return false;
                     }
-                } else {
-                    BigDecimal b = new BigDecimal(String.valueOf(field.get(obj)));
-                    if (b.compareTo(a) <= 0) {
-                        return false;
-                    }
+
                 }
             }
             if (field.isAnnotationPresent(NotNull.class)) {
@@ -47,7 +35,7 @@ public class Validator {
                 }
             }
             if (field.isAnnotationPresent(Regexp.class)) {
-                if(field.get(obj) instanceof CharSequence) {
+                if (field.get(obj) instanceof CharSequence) {
                     Pattern p = Pattern.compile(field.getAnnotation(Regexp.class).regexp());
                     Matcher m = p.matcher((CharSequence) field.get(obj));
                     if (!m.matches()) {
