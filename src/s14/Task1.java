@@ -67,15 +67,12 @@ public class Task1 {
                 System.out.println(e.getMessage());
             }
         }
-        Letter[] l = new Letter[s.length];
-        for (int i = 0; i < s.length; i++) {
-            Letter letter = new Letter(s[i].getaChar(), s[i].getResult());
-            l[i] = letter;
+
+        Arrays.sort(s, new LettersComparator());
+        for (SumLetters sumLetters : s) {
+            System.out.println(sumLetters.getaChar() + " - " + sumLetters.getResult());
         }
-        System.out.println(Arrays.toString(l).replace(", ", "\n"));
-        Arrays.sort(l, new LettersComparator());
-        System.out.println("================================");
-        System.out.println(Arrays.toString(l).replace(", ", "\n"));
+
         file.delete();
 
     }

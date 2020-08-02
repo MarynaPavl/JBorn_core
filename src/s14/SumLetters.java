@@ -1,5 +1,7 @@
 package s14;
 
+import java.util.Comparator;
+
 public class SumLetters implements Runnable {
     private final char[] array;
     private final char aChar;
@@ -27,4 +29,15 @@ public class SumLetters implements Runnable {
         return result;
     }
 
+}
+class LettersComparator implements Comparator<SumLetters> {
+
+    @Override
+    public int compare(SumLetters o1, SumLetters o2) {
+        int compare = Long.compare(o2.getResult(), o1.getResult());
+        if (compare != 0) {
+            return compare;
+        }
+        return Character.compare(o1.getaChar(), o2.getaChar());
+    }
 }
