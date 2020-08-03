@@ -64,8 +64,9 @@ public class Task1 {
             try {
                 thread.join();
             } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
+                e.printStackTrace();
             }
+
         }
 
         Arrays.sort(s, new LettersComparator());
@@ -86,7 +87,7 @@ public class Task1 {
                 sb.append(line);
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return sb.toString().toLowerCase();
     }
