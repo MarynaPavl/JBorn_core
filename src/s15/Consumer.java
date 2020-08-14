@@ -15,7 +15,7 @@ public class Consumer implements Runnable {
         String threadId = Thread.currentThread().getName();
         try {
             Message msg;
-            while (true) {
+            while (!Thread.currentThread().isInterrupted()) {
                 msg = sharedQueue.poll(60, TimeUnit.SECONDS);
                 if ((msg != null ? msg.getName() : null) == null) {
                     break;
@@ -23,9 +23,10 @@ public class Consumer implements Runnable {
                 System.out.println(threadId + ": HELLO " + msg.getName().toUpperCase() + "!");
 
             }
+
+        } catch (InterruptedException e) {
             System.out.println(threadId + " STOPPED!");
-        } catch (InterruptedException ie) {
-            ie.printStackTrace();
+
         }
     }
 }

@@ -5,6 +5,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Task1 {
     public static void main(String[] args) {
+
         BlockingQueue<Message> sharedQueue = new LinkedBlockingQueue<>(10);
 
         Thread prodThread = new Thread(new Producer(sharedQueue));
@@ -16,16 +17,19 @@ public class Task1 {
         consThread1.start();
         consThread2.start();
         consThread3.start();
+
         try {
-            consThread1.join();
-            consThread2.join();
-            consThread3.join();
+            Thread.sleep(60000);
+            prodThread.interrupt();
+            consThread1.interrupt();
+            consThread2.interrupt();
+            consThread3.interrupt();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
+
         }
-
-
     }
+
 }
 
 class Message {

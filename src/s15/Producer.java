@@ -14,19 +14,25 @@ public class Producer implements Runnable {
 
     @Override
     public void run() {
+
         try {
-            for (int i = 0; i < 5; i++) {
+            while (!Thread.currentThread().isInterrupted()) {
                 Scanner s = new Scanner(System.in);
                 Message msg = new Message();
                 System.out.println("Write your name, please!");
                 msg.setName(s.nextLine());
+                if (msg.getName() == null || msg.getName().isEmpty()) {
+                    break;
+                }
                 sharedQueue.put(msg);
                 Thread.sleep(1000);
             }
-
-            System.out.println("Thank you! We're done.");
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("Producer STOPPED!");
+
         }
+
+        System.out.println("Thank you! We're done.");
     }
+
 }
