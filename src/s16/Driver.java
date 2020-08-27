@@ -17,9 +17,7 @@ public class Driver {
         return DrivingExperience;
     }
 
-    public boolean isSuitable() {
-        return getDrivingExperience() > 10;
-    }
+
 
     @Override
     public String toString() {
