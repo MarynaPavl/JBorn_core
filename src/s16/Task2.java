@@ -5,8 +5,10 @@ import java.util.Random;
 
 public class Task2 {
     public static void main(String[] args) {
-        int[] array = new Random().ints(10, -100, 100).toArray();
-        System.out.println(Arrays.toString(array) + "\n");
+        int[] array = new Random().ints(10000000, -100, 100).toArray();
+        // почему если сделать больше 245 милионов відает Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+       //  в такой ситуации нужно увеличивать heap вручную??? (и как?) или как поступать?
+      //  System.out.println(Arrays.toString(array) + "\n");
 
         long start = System.nanoTime();
         int sumStream = Arrays.stream(array)
