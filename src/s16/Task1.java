@@ -17,11 +17,10 @@ public class Task1 {
                 new Driver("Mia Robinson", 3)
         );
 
-        Validator<Driver> validator = d -> d.DrivingExperience > 10; // не понимаю, как этот validator использовать дальше????
-        // в фильтре??? тогда не могу понять как это записать
+        Validator<Driver> validator = d -> d.DrivingExperience > 10;
 
         drivers.stream()
-                .filter(driver -> driver.DrivingExperience > 10)
+                .filter(validator::isValid)
                 .sorted(Comparator.comparing(o -> o.FirstAndLastName))
                 .map(d -> new Driver(d.FirstAndLastName, d.DrivingExperience))
                 .forEach(System.out::println);
